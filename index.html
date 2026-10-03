@@ -69,7 +69,7 @@
     .hero { padding: 64px 0 94px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.2fr .8fr;
       align-items: center;
       gap: 70px;
     }
@@ -128,10 +128,15 @@
     .button-secondary { border-color: var(--line); background: rgba(255,255,255,.6); }
     .button svg { width: 16px; height: 16px; }
 
-    .visual-wrap { position: relative; min-height: 410px; }
+    .visual-wrap {
+      position: relative;
+      width: min(100%, 380px);
+      min-height: 360px;
+      justify-self: end;
+    }
     .visual-card {
       position: absolute;
-      inset: 20px 30px 20px 20px;
+      inset: 14px 24px 14px 14px;
       display: grid;
       overflow: hidden;
       place-items: center;
@@ -140,6 +145,16 @@
       background:
         radial-gradient(ellipse at 50% 85%, rgba(159,190,168,.72), transparent 42%),
         linear-gradient(145deg, #e8edf0 0%, #e9e6f2 48%, #f4e8de 100%);
+    }
+    .profile-photo {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
+      object-position: center 32%;
     }
     .visual-card::before, .visual-card::after {
       position: absolute;
@@ -151,23 +166,6 @@
     }
     .visual-card::before { top: -80px; right: -60px; }
     .visual-card::after { bottom: -145px; left: -65px; width: 320px; height: 320px; }
-    .monogram {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      width: 196px;
-      height: 196px;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,.7);
-      border-radius: 50%;
-      background: rgba(255,255,255,.28);
-      color: var(--green);
-      font-family: var(--font-display);
-      font-size: 68px;
-      font-weight: 600;
-      letter-spacing: -7px;
-      backdrop-filter: blur(8px);
-    }
     .floating-note {
       position: absolute;
       right: 0;
@@ -281,9 +279,8 @@
       .hero-grid { grid-template-columns: 1fr; gap: 32px; }
       h1 { letter-spacing: -3px; }
       .hero-copy { font-size: 16px; }
-      .visual-wrap { min-height: 340px; }
+      .visual-wrap { width: min(100%, 340px); min-height: 300px; justify-self: center; }
       .visual-card { inset: 8px 18px 8px 8px; }
-      .monogram { width: 160px; height: 160px; font-size: 57px; }
       .floating-note { bottom: 35px; }
       .credentials { grid-template-columns: 1fr; gap: 12px; padding-bottom: 60px; }
       .section { padding: 64px 0; }
@@ -336,8 +333,8 @@
             <a class="button button-secondary" href="#contacto">Conversemos</a>
           </div>
         </div>
-        <div class="visual-wrap" aria-label="Monograma JD sobre un fondo pastel">
-          <div class="visual-card"><div class="monogram" aria-hidden="true">JD</div></div>
+        <div class="visual-wrap">
+          <div class="visual-card"><img class="profile-photo" src="assets/profile-juan-diego.jpg" alt="Juan Diego"></div>
           <div class="floating-note">
             <span class="note-icon" aria-hidden="true">✳</span>
             <span><strong>Una mirada integral</strong><small>Negocio + analítica</small></span>
