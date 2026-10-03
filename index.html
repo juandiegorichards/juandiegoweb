@@ -1,1 +1,403 @@
-web inicial de juan diego
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="Perfil profesional de Juan Diego: magíster en Alta Dirección y estudiante de máster en Data Science.">
+  <title>Juan Diego | Dirección y Data Science</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202d2a;
+      --muted: #687571;
+      --green: #315b4c;
+      --green-dark: #25483c;
+      --mint: #e2eee6;
+      --lavender: #eeeaf7;
+      --peach: #f5e8df;
+      --paper: #f7f8f4;
+      --white: #fff;
+      --line: #e6eae4;
+      --font-body: "DM Sans", sans-serif;
+      --font-display: "Manrope", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid #86a995; outline-offset: 4px; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+
+    .topbar { padding: 25px 0; }
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+    }
+    .brand span { color: #87a392; }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
+    .nav-links a { color: #59645f; font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      padding: 10px 17px;
+      border: 1px solid #d9e1da;
+      border-radius: 999px;
+      color: var(--green) !important;
+    }
+
+    .hero { padding: 64px 0 94px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 70px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #a2bda8;
+      content: "";
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 640px;
+      margin: 18px 0;
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 70px);
+      font-weight: 600;
+      letter-spacing: -4.5px;
+      line-height: 1.08;
+    }
+    h1 em { color: var(--green); font-style: normal; }
+    .hero-copy {
+      max-width: 535px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; }
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--green); color: var(--white); }
+    .button-primary:hover { background: var(--green-dark); }
+    .button-secondary { border-color: var(--line); background: rgba(255,255,255,.6); }
+    .button svg { width: 16px; height: 16px; }
+
+    .visual-wrap { position: relative; min-height: 410px; }
+    .visual-card {
+      position: absolute;
+      inset: 20px 30px 20px 20px;
+      display: grid;
+      overflow: hidden;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 28px;
+      background:
+        radial-gradient(ellipse at 50% 85%, rgba(159,190,168,.72), transparent 42%),
+        linear-gradient(145deg, #e8edf0 0%, #e9e6f2 48%, #f4e8de 100%);
+    }
+    .visual-card::before, .visual-card::after {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 50%;
+      content: "";
+    }
+    .visual-card::before { top: -80px; right: -60px; }
+    .visual-card::after { bottom: -145px; left: -65px; width: 320px; height: 320px; }
+    .monogram {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 196px;
+      height: 196px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%;
+      background: rgba(255,255,255,.28);
+      color: var(--green);
+      font-family: var(--font-display);
+      font-size: 68px;
+      font-weight: 600;
+      letter-spacing: -7px;
+      backdrop-filter: blur(8px);
+    }
+    .floating-note {
+      position: absolute;
+      right: 0;
+      bottom: 54px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 12px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 14px 35px rgba(47,64,54,.08);
+    }
+    .note-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--mint);
+      color: var(--green);
+      font-size: 18px;
+    }
+    .floating-note strong, .floating-note small { display: block; }
+    .floating-note strong { font-size: 13px; }
+    .floating-note small { color: var(--muted); font-size: 11px; }
+
+    .credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 0 0 82px;
+    }
+    .credential {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.68);
+    }
+    .credential-icon {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--lavender);
+      color: #665b83;
+      font-size: 19px;
+    }
+    .credential:nth-child(2) .credential-icon { background: var(--mint); color: var(--green); }
+    .credential h3 { margin-bottom: 3px; font-family: var(--font-display); font-size: 15px; }
+    .credential p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+
+    .section { padding: 84px 0; }
+    .about { background: #fff; }
+    .section-heading { max-width: 650px; margin-bottom: 38px; }
+    .section-heading h2, .about-copy h2 {
+      margin: 13px 0;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 600;
+      letter-spacing: -1.8px;
+      line-height: 1.2;
+    }
+    .section-heading p, .about-copy p { margin-bottom: 0; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; align-items: start; }
+    .about-copy h2 { margin-top: 0; }
+    .about-copy p + p { margin-top: 16px; }
+    .principles { display: grid; gap: 14px; }
+    .principle {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: #f7f8f5;
+    }
+    .principle-mark { color: #71927c; font-size: 18px; line-height: 1.3; }
+    .principle strong { display: block; margin-bottom: 3px; font-family: var(--font-display); font-size: 14px; }
+    .principle span:last-child { color: var(--muted); font-size: 13px; }
+
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .focus-card { min-height: 220px; padding: 25px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .focus-card:nth-child(1) { background: #edf3ee; border-color: #edf3ee; }
+    .focus-card:nth-child(2) { background: #f0eef6; border-color: #f0eef6; }
+    .focus-card:nth-child(3) { background: #f5ede7; border-color: #f5ede7; }
+    .focus-number { display: block; margin-bottom: 36px; color: #7b9182; font-family: var(--font-display); font-size: 13px; font-weight: 700; }
+    .focus-card h3 { margin-bottom: 8px; font-family: var(--font-display); font-size: 17px; }
+    .focus-card p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+
+    .contact { padding: 76px 0; background: var(--green-dark); color: white; }
+    .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 35px; }
+    .contact .eyebrow { color: #c7dbce; }
+    .contact h2 { max-width: 590px; margin: 12px 0 0; font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 600; letter-spacing: -1.7px; line-height: 1.2; }
+    .contact .button { flex: 0 0 auto; background: white; color: var(--green-dark); }
+    footer { padding: 23px 0; color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    footer p { margin: 0; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .topbar { padding: 20px 0; }
+      .nav-links { gap: 17px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { padding: 45px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      h1 { letter-spacing: -3px; }
+      .hero-copy { font-size: 16px; }
+      .visual-wrap { min-height: 340px; }
+      .visual-card { inset: 8px 18px 8px 8px; }
+      .monogram { width: 160px; height: 160px; font-size: 57px; }
+      .floating-note { bottom: 35px; }
+      .credentials { grid-template-columns: 1fr; gap: 12px; padding-bottom: 60px; }
+      .section { padding: 64px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .focus-card { min-height: 185px; }
+      .focus-number { margin-bottom: 25px; }
+      .contact { padding: 60px 0; }
+      .contact-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+      .shell { width: calc(100% - 32px); }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .credential { padding: 18px; }
+      .footer-inner { flex-direction: column; gap: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="navigation shell" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Juan Diego, inicio">JD<span>.</span></a>
+      <div class="nav-links">
+        <a href="#perfil">Perfil</a>
+        <a href="#enfoque">Enfoque</a>
+        <a class="nav-cta" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" id="inicio">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Dirección · Estrategia · Datos</span>
+          <h1>Decisiones con visión. <em>Ideas con datos.</em></h1>
+          <p class="hero-copy">Soy Juan Diego, magíster en Alta Dirección y estudiante de máster en Data Science. Me interesa conectar la estrategia de negocio con el potencial de los datos para construir mejores decisiones.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#perfil">
+              Conoce mi perfil
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button button-secondary" href="#contacto">Conversemos</a>
+          </div>
+        </div>
+        <div class="visual-wrap" aria-label="Monograma JD sobre un fondo pastel">
+          <div class="visual-card"><div class="monogram" aria-hidden="true">JD</div></div>
+          <div class="floating-note">
+            <span class="note-icon" aria-hidden="true">✳</span>
+            <span><strong>Una mirada integral</strong><small>Negocio + analítica</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="credentials shell" aria-label="Formación académica">
+      <article class="credential">
+        <span class="credential-icon" aria-hidden="true">↗</span>
+        <div><h3>Magíster en Alta Dirección</h3><p>Formación en liderazgo y gestión estratégica.</p></div>
+      </article>
+      <article class="credential">
+        <span class="credential-icon" aria-hidden="true">⌁</span>
+        <div><h3>Máster en Data Science</h3><p>Estudiante, explorando el análisis de datos.</p></div>
+      </article>
+    </section>
+
+    <section class="section about" id="perfil">
+      <div class="shell about-grid">
+        <div class="about-copy">
+          <span class="eyebrow">Mi perfil</span>
+          <h2>Dos disciplinas, una visión.</h2>
+          <p>La dirección estratégica y la ciencia de datos aportan perspectivas complementarias: una ayuda a entender hacia dónde avanzar; la otra, a descubrir qué nos dicen los datos en el camino.</p>
+          <p>Mi formación combina experiencia académica en gestión con aprendizaje continuo en analítica, para abordar los desafíos con curiosidad, criterio y una perspectiva de negocio.</p>
+        </div>
+        <div class="principles" aria-label="Principios de trabajo">
+          <div class="principle"><span class="principle-mark" aria-hidden="true">✳</span><span><strong>Visión estratégica</strong><span>Entender el contexto y mantener el foco en los objetivos.</span></span></div>
+          <div class="principle"><span class="principle-mark" aria-hidden="true">⌁</span><span><strong>Curiosidad analítica</strong><span>Hacer mejores preguntas y explorar lo que revelan los datos.</span></span></div>
+          <div class="principle"><span class="principle-mark" aria-hidden="true">↗</span><span><strong>Aprendizaje constante</strong><span>Integrar nuevas herramientas e ideas con criterio práctico.</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="enfoque">
+      <div class="shell">
+        <div class="section-heading">
+          <span class="eyebrow">Mi enfoque</span>
+          <h2>Conectar conocimiento con propósito.</h2>
+          <p>Una base multidisciplinaria para comprender los desafíos actuales desde distintos ángulos.</p>
+        </div>
+        <div class="focus-grid">
+          <article class="focus-card"><span class="focus-number">01 / ESTRATEGIA</span><h3>Alta dirección</h3><p>Gestión, liderazgo y pensamiento estratégico para comprender las organizaciones.</p></article>
+          <article class="focus-card"><span class="focus-number">02 / ANALÍTICA</span><h3>Ciencia de datos</h3><p>Formación en curso para explorar datos y desarrollar una mirada cuantitativa.</p></article>
+          <article class="focus-card"><span class="focus-number">03 / INTEGRACIÓN</span><h3>Visión de negocio</h3><p>El valor de la analítica crece cuando se conecta con preguntas y objetivos concretos.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="shell contact-inner">
+        <div><span class="eyebrow">Contacto</span><h2>¿Hablamos de estrategia, datos o nuevas ideas?</h2></div>
+        <a class="button" href="mailto:tu-correo@ejemplo.com">Escríbeme <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner"><p>© 2026 Juan Diego</p><p>Dirección y ciencia de datos, con propósito.</p></div>
+  </footer>
+</body>
+</html>
